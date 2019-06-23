@@ -14,3 +14,15 @@ Main Repo for Terrabl Terraform Tool
 ## Contributing
 
 [Please Follow Contributing Guidelines](CONTRIBUTING.md)
+
+## Install
+
+[Install Instructions](https://askubuntu.com/questions/983351/how-to-install-terraform-in-ubuntu#answer-983352)
+
+## Setup
+
+```terraform init```
+
+## Apply Changes
+
+```terraform apply --var="app_version=1.0.0```
