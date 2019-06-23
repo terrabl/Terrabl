@@ -4,8 +4,8 @@ variable "app_version" {
 }
 
 provider "aws" {
-  access_key = "AKIAYO6FPPPZUAKWP2X3"
-  secret_key = "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"
+  access_key = "AKIAYO6FPPPZUAKWP2X3" # dead
+  secret_key = "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" # dead 
   region = "us-east-1"
 }
 
