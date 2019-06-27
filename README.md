@@ -1,4 +1,4 @@
-# Terrabl
+# <img src="img/logo.png" height=30> Terrabl
 
 Main Repo for Terrabl Terraform Tool 
 
