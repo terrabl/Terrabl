@@ -40,7 +40,7 @@ terrabl init [-s || --silent] [-l || --location=path/to/directory]
 
 _This happens **once** in a single terrabl project_
 
-```json
+```js
 {
     "name": "My App", // Your App's Name (to be used for naming resources)
     "AWS_config": {
@@ -71,7 +71,7 @@ _This happens **once** in a single terrabl project_
 
 _Put this in any folder containing the base directory of a **single resource**_
 
-```json
+```js
 {
     "name": "MyResource", // name to be used in creation of resource
     "resouce_type": "aws/lambda", // resource type
