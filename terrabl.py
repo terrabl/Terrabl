@@ -22,8 +22,6 @@ Helpers         -- Where all the code should be
 
 Main            -- Main Class
 
-CLI             -- For handling CLI
-
 '''
 
 # --- Imports ---
@@ -39,15 +37,23 @@ from parser.parser import Parser
 # --- Main ---
 class Terrabl:
     def __init__(self):
+        # Get Arg Parser
+        parser = Parser() # keep everything parser-related local
+        
+        # Add handlers
+        parser.init.addHandler(self.initHandler)
+        parser.stage.addHandler(self.stageHandler)
+        parser.apply.addHandler(self.applyHandler)
+
+        # Get Args and Apply Function
+        args = parser.parse_args()
+        return args.func(args) # EOF
+
+    def initHandler(self, args):
         return
 
+    def stageHandler(self, args):
+        return
 
-# --- CLI ---
-# Get ArgParse parser
-parser = Parser() # some IDE's have issues with imports, this works!
-
-# Add handlers
-# TODO: add handlers
-parser.init.addHandler()
-parser.stage.addHandler()
-parser.apply.addHandler()
+    def applyHandler(self, args):
+        return
