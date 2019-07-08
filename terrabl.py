@@ -47,6 +47,7 @@ class Terrabl:
 parser = Parser() # some IDE's have issues with imports, this works!
 
 # Add handlers
+# TODO: add handlers
 parser.init.addHandler()
 parser.stage.addHandler()
 parser.apply.addHandler()
