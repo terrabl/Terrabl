@@ -1,12 +1,12 @@
 # https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
 variable "app_version" {
-  
+
 }
 
 provider "aws" {
-  access_key = "AKIAYO6FPPPZUAKWP2X3" # dead
-  secret_key = "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" # dead 
-  region = "us-east-1"
+  access_key = "${var.key}" # dead
+  secret_key = "${var.secret}" # dead 
+  region = "${var.aws_region}"
 }
 
 resource "aws_lambda_function" "example" {
