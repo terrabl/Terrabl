@@ -20,7 +20,7 @@ Imports         -- packages used in this file
 
 Helpers         -- Where all the code should be
 
-Main            -- Main Class
+Main            -- Main class and runner
 
 '''
 
@@ -57,3 +57,6 @@ class Terrabl:
 
     def applyHandler(self, args):
         return
+
+if __name__ == "__main__":
+    Terrabl()
