@@ -98,4 +98,5 @@ class Installer:
                 self.exec(command)
 
         # Terminating 
-        self.p("")
+        self.p("Completed process")
+
