@@ -18,11 +18,11 @@ class Parser:
         self.parser = self.parent.subparsers.add_parser('install', \
             help="install help")
 
-        with open("../installer/dependencies", 'r') as y:
+        with open("./installer/dependencies.yaml", 'r') as y:
             choices = yaml.safe_load(y).keys()
 
         # Add arguments
-        self.parser.add_argument('Installer', type=str, \
+        self.parser.add_argument('installer', type=str, \
             help="Installer available this machine", choices=choices)
 
         self.parser.add_argument('-y', '--yes', action="store_true", \

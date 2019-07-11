@@ -156,3 +156,4 @@ dmypy.json
 .pyre/
 
 # --- Add package-specific ignores below ---
+*.zip

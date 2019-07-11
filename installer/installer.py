@@ -17,7 +17,7 @@ import time
 class Installer:
     def __init__(self, args):
         # Get dependencies
-        with open('dependencies.yaml', 'r') as y:
+        with open('./installer/dependencies.yaml', 'r') as y:
             # type(self.ds) = dict
             self.ds = yaml.safe_load(y)
 
@@ -59,7 +59,7 @@ class Installer:
 
         with subprocess.Popen(shlex.split(c), **options) as p:
             for line in p.stdout:
-                self.p(line, end="")
+                self.p(line)
         
         if p.returncode != 0:
             raise subprocess.CalledProcessError(p.returncode, p.args)
@@ -78,11 +78,12 @@ class Installer:
 
         # Handle user confirmation prompt
         toInstall = self.ds[self.installer].keys()
-        warning = "This will install" + \
+        warning = "This will install " + \
             ', '.join([e.capitalize() for e in toInstall]) +\
             ", is that alright? [Y/n]  " 
-        if not self.yes and not input(warning).lower() in "yes":
-            return 0, "Process aborted gracefully by user."
+        if not self.yes and not (input(warning).lower() in "yes"):
+            self.p("Process aborted gracefully by user.")
+            return 
 
         self.p("Starting installer...")
 

@@ -27,6 +27,7 @@ Main            -- Main class and runner
 # --- Imports ---
 # Local
 from parser.parser import Parser
+from installer.installer import Installer
 
 # Imported
 
@@ -47,20 +48,53 @@ class Terrabl:
         parser.apply.addHandler(self.applyHandler)
 
         # Get Args and Apply Function
-        args = parser.parse_args()
+        args = parser.parser.parse_args()
 
         return args.func(args) # EOF
 
     def installHandler(self, args):
-        return
+        """ Handle install process
+
+        Args:
+            args (argparse.Namespace): Arguments from CLI command
+
+        Returns:
+            None
+        """
+        installer = Installer(args)
+        installer.install()
 
     def initHandler(self, args):
+        """ Handle init process
+
+        Args:
+            args (argparse.Namespace): Arguments from CLI command
+
+        Returns:
+            None
+        """
         return
 
     def stageHandler(self, args):
+        """ Handle stage process
+
+        Args:
+            args (argparse.Namespace): Arguments from CLI command
+
+        Returns:
+            None
+        """
         return
 
     def applyHandler(self, args):
+        """ Handle apply process
+
+        Args:
+            args (argparse.Namespace): Arguments from CLI command
+
+        Returns:
+            None
+        """
         return
 
 if __name__ == "__main__":
