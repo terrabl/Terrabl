@@ -41,13 +41,18 @@ class Terrabl:
         parser = Parser() # keep everything parser-related local
         
         # Add handlers
+        parser.install.addHandler(self.installHandler)
         parser.init.addHandler(self.initHandler)
         parser.stage.addHandler(self.stageHandler)
         parser.apply.addHandler(self.applyHandler)
 
         # Get Args and Apply Function
         args = parser.parse_args()
+
         return args.func(args) # EOF
+
+    def installHandler(self, args):
+        return
 
     def initHandler(self, args):
         return

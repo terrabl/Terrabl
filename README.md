@@ -23,7 +23,14 @@ Main Repo for Terrabl Terraform Tool
 
 ```bash 
 pip install terrabl
+
+sudo terrabl install [-y || --yes] [-s || --silent] <Installer>
 ```
+
+* Installs non-python dependencies given installer type
+* **Installer**: brew | apt | yum
+* **-y || --yes**: skip confirmation
+* **-s || --silent**: do not send anything to stdout
 
 ## Setup
 

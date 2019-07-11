@@ -1,0 +1,15 @@
+# NOTE: For each dependency, an entry in *every installer type* must be included
+apt: # ubuntu
+  terraform: 
+    - "sudo apt update" 
+    - "sudo apt install install wget unzip" 
+    - "wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip"
+    - "sudo unzip ./terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/"
+brew: # macos
+  terraform: "brew install terraform"
+yum: # centos
+  terraform: 
+    - "sudo yum update" 
+    - "sudo yum install wget unzip" 
+    - "wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip"
+    - "sudo unzip ./terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/"
