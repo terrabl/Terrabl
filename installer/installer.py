@@ -25,6 +25,7 @@ class Installer:
         self.yes = args.yes
         self.installer = args.installer
         self.silent = args.silent
+
         
     def p(self, val):
         """ Print if self.yes
@@ -35,7 +36,9 @@ class Installer:
         Returns:
             None
         """
-        if not self.silent: print(val, flush=True)
+        if not self.silent: 
+            print(val, flush=True)
+
 
     def exec(self, c):
         """ Blocking run command with error handling
@@ -63,6 +66,7 @@ class Installer:
         
         if p.returncode != 0:
             raise subprocess.CalledProcessError(p.returncode, p.args)
+            
 
     def install(self):
         """ Start install process
