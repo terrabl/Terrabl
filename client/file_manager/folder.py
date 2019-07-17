@@ -13,9 +13,9 @@ import os
 
 # --- Main ---
 class Folder:
-    def __init__(self, location, parent=None):
+    def __init__(self, location, parent):
         # Set Parent
-        if parent is not None: self.parent=parent
+        self.parent=parent
         
         # Set identity
         self.abspath = location.split('/')
@@ -35,8 +35,8 @@ class Folder:
             + f"{self.name}: [{', '.join([str(node) for node in children])}]" \
             + "}"
 
-    def add(self, location):
-        ''' Add a child
+    def addChild(self, location):
+        ''' Add a child file
 
         Args:
             location (string): Absolute path to child
@@ -48,8 +48,21 @@ class Folder:
         return True
 
     
-    def remove(self, location):
-        ''' Remove a child
+    def addFolder(self, location):
+        ''' Add a child folder
+
+        Args:
+            location (string): Absolute path to child
+
+        Returns:
+            success (boolean): Whether the attempt was successful
+        '''
+        # TODO: add syntax
+        return True
+
+    
+    def removeChild(self, location):
+        ''' Remove a child file
 
         Args:
             location (string): Absolute path to child
@@ -70,4 +83,17 @@ class Folder:
         Returns:
             success (boolean): Whether the child exists
         '''
+        # TODO: add syntax
+        return True
+
+    
+    def explore(self):
+        ''' Recursive update
+
+        Args: None
+
+        Returns:
+            success (boolean): Whether the child exists
+        '''
+        # TODO: add syntax
         return True

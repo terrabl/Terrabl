@@ -25,7 +25,7 @@ Main            -- Main class and runner
 '''
 
 # --- Imports ---
-# Local
+# Local -- no first . because this is root
 from parser.parser import Parser
 from installer.installer import Installer
 from client.crawler.crawler import Crawler

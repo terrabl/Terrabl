@@ -15,18 +15,34 @@ import os
 # --- Main ---
 class File_Manager:
     def __init__(self, location):
-        self.basepath = os.getcwd()
-        combinedPath = self.basepath \
+        # Bootstrap location abspath
+        basepath = os.getcwd()
+
+        combinedPath = basepath \
             + ("/" if location[0] is not "/" else "") + location \
             + ("/" if location[-1] is not "/" else "") + '.terrabl/'
-        self.base = os.path.abspath(combinedPath) # absolute path of base folder
-        self.files = [] # all the files in .terrabl/
-        self.folders = Folder(self.base, 'base') if createFolder(self.base) else self.explore(self.base) # folder struct of .terrabl/
+        
+        # Absolute path of base folder
+        self.basepath = os.path.abspath(combinedPath) 
+
+        # Make folder object for self
+        self.createFolder(self.basepath, True)
+        self.base = self.explore()
 
     
-    def createFolder(self, folder):
+    def createFolder(self, folder, base=False):
         if not os.path.isdir(folder):
-            # TODO: Make folder
+            os.mkdir(folder)
+            if not base:
+                self.base.addFolder(folder)
             return True
         else:
+            if not base:
+                self.explore()
             return False
+
+
+    def explore(self):
+        f = Folder(self.basepath, self)
+        f.explore()
+        return f
