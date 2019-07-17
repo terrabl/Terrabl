@@ -26,8 +26,10 @@ Main            -- Main class and runner
 
 # --- Imports ---
 # Local
-from parser.parser import Parser
-from installer.installer import Installer
+from .parser.parser import Parser
+from .installer.installer import Installer
+from .client.crawler.crawler import Crawler
+from .client.file_manager.file_manager import File_Manager
 
 # Imported
 
