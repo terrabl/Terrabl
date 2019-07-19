@@ -13,7 +13,7 @@ import os
 
 # --- Main ---
 class Directory:
-    def __init__(self, location, parent, abspath=True):
+    def __init__(self, location, parent, abspath=True, explore=True):
         # Set Parent
         self.parent=parent
         
@@ -30,7 +30,7 @@ class Directory:
         self.dirs = []
 
         # Explore
-        self.explore()
+        if explore: self.explore()
 
 
     def __repr__(self):
@@ -120,14 +120,18 @@ class Directory:
         children = next(os.walk())
         
         # Save all the children
-        leaves = [Leaf(f"{self.path}/{l}") for l in children[2]]
-        dirs = [Directory(f"{self.path}/{d}") for d in children[1]]
+        leaves = [Leaf(f"{self.path}/{l}", self) for l in children[2]]
+        dirs = [Directory(f"{self.path}/{d}", self, True, False) \
+            for d in children[1]]
 
         # Check if they were already accounted for
         leafNames = [l.name for l in self.leaves]
         leaves = list(filter(lambda l: l.name not in leafNames, self.leaves))
         dirNames = [d.name for d in self.dirs]
         dirs = list(filter(lambda d: d.name not in dirNames, self.dirs))
+
+        # Explore Dirs
+        map(lambda d: d.explore, dirs)
             
         # Add remaining children to list
         self.leaves += leaves
