@@ -8,7 +8,6 @@ Directory Struct -- basically a tree
 from .leaf import Leaf
 
 # Imported
-import yaml
 import os
 
 
@@ -18,15 +17,20 @@ class Directory:
         # Set Parent
         self.parent=parent
         
-        # Set identity
+        # Set path
         if abspath: self.abspath = location.split('/')
         else: self.abspath = parent.abspath + location.split('/')
+        self.path = '/'.join(self.abspath)
+
         self.name = self.abspath[-1] if self.abspath[-1] is not '' \
             else self.abspath[-2]
 
         # Start Children
         self.leaves = []
         self.dirs = []
+
+        # Explore
+        self.explore()
 
 
     def __repr__(self):
@@ -110,16 +114,23 @@ class Directory:
         Args: None
 
         Returns:
-            success (boolean): Whether the child exists
+            success (boolean): Whether the operation was successful
         '''
-        successes = []
-
-        # Find all the leaves
-        for leaf in next(os.walk('/'.join(self.abspath)))[2]:
-            successes.append(self.addLeaf(leaf))
+        # Find all the immediate children
+        children = next(os.walk())
         
-        # Find all the directories
-        for d in next(os.walk('/'.join(self.abspath)))[1]:
-            successes.append(self.addDir(d))
+        # Save all the children
+        leaves = [Leaf(f"{self.path}/{l}") for l in children[2]]
+        dirs = [Directory(f"{self.path}/{d}") for d in children[1]]
+
+        # Check if they were already accounted for
+        leafNames = [l.name for l in self.leaves]
+        leaves = list(filter(lambda l: l.name not in leafNames, self.leaves))
+        dirNames = [d.name for d in self.dirs]
+        dirs = list(filter(lambda d: d.name not in dirNames, self.dirs))
             
-        return False not in successes
+        # Add remaining children to list
+        self.leaves += leaves
+        self.dirs += dirs
+        
+        return True
