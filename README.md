@@ -100,3 +100,14 @@ terrabl apply [location]
 ```
 
 _If location is specified, look for `terrabl.yaml` there_
+
+## TODO
+
+_Other than what's been previously noted_
+
+* Setup
+  * Implement file_manager -- [alexshukhman](https://github.com/alexshukhman)
+  * Design file structure for .terrabl dir -- [alexshukhman](https://github.com/alexshukhman)
+  * Implement git-style state management -- `Unassigned`
+* Stage -- `Unassigned`
+* Apply -- `Unassigned`
