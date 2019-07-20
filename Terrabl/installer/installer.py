@@ -11,13 +11,15 @@ import yaml
 import subprocess
 import shlex
 import time
+import os
 
 
 # --- Main ---
 class Installer:
     def __init__(self, args):
         # Get dependencies
-        with open('./installer/dependencies.yaml', 'r') as y:
+        current = os.path.dirname(__file__)
+        with open(current+'/dependencies.yaml', 'r') as y:
             # type(self.ds) = dict
             self.ds = yaml.safe_load(y)
 

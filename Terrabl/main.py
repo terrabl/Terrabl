@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/user/bin/env python3
 '''
 
 Terrabl CLI Main
@@ -26,12 +26,14 @@ Main            -- Main class and runner
 
 # --- Imports ---
 # Local -- no first . because this is root
-from parser.parser import Parser
-from installer.installer import Installer
-from client.crawler.crawler import Crawler
-from client.file_manager.tdir import TDir
+from .parser.parser import Parser
+from .installer.installer import Installer
+from .client.crawler.crawler import Crawler
+from .client.file_manager.tdir import TDir
 
 # Imported
+import sys
+import os
 
 
 # --- Helpers ---
@@ -51,8 +53,11 @@ class Terrabl:
 
         # Get Args and Apply Function
         args = parser.parser.parse_args()
-
-        args.func(args) # EOF
+        if not len(sys.argv) > 1: # handle no args
+            print('Welcome to the Terrabl Terraform Tool!',
+                  'Please use -h to learn more...')
+        else:
+            args.func(args) # EOF
 
     def installHandler(self, args):
         """ Handle install process
@@ -99,5 +104,8 @@ class Terrabl:
         """
         return
 
-if __name__ == "__main__":
+def main():
     Terrabl()
+    
+if __name__ == "__main__":
+    main()

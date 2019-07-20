@@ -8,6 +8,7 @@ Sub-parser for `install` command
 
 # Imported
 import yaml
+import os
 
 
 # --- Main ---
@@ -18,7 +19,10 @@ class Parser:
         self.parser = self.parent.subparsers.add_parser('install', \
             help="install help")
 
-        with open("./installer/dependencies.yaml", 'r') as y:
+        # Open dependencies
+        current = os.path.dirname(__file__)
+        depFile = os.path.normpath(current+"/../installer/dependencies.yaml")
+        with open(depFile, 'r') as y:
             choices = yaml.safe_load(y).keys()
 
         # Add arguments
