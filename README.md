@@ -22,7 +22,7 @@ Main Repo for Terrabl Terraform Tool
 ## Install Terrabl
 
 ```bash 
-pip install terrabl
+pip install .
 
 sudo terrabl install [-y || --yes] [-s || --silent] <Installer>
 ```
