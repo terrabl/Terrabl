@@ -12,7 +12,10 @@ import os
 
 # --- Main ---
 class Leaf:
-    def __init__(self, location, parent, abspath=True): # abspath (bool): if `location` is an absolute path
+    def __init__(self, location, parent):
+        # Set Type
+        self.type = 'leaf'
+        
         # Set Parent
         self.parent=parent
         

@@ -29,7 +29,7 @@ Main            -- Main class and runner
 from parser.parser import Parser
 from installer.installer import Installer
 from client.crawler.crawler import Crawler
-from client.file_manager.file_manager import File_Manager
+from client.file_manager.tdir import TDir
 
 # Imported
 
@@ -52,7 +52,7 @@ class Terrabl:
         # Get Args and Apply Function
         args = parser.parser.parse_args()
 
-        return args.func(args) # EOF
+        args.func(args) # EOF
 
     def installHandler(self, args):
         """ Handle install process
